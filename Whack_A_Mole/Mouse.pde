@@ -9,3 +9,9 @@ void mousePressed() {
     gameoverClicks(); 
   }
 }
+
+void mouseDragged() {
+  if (mode == INTRO) {
+    introDrags(); 
+  }
+}

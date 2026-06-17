@@ -13,7 +13,7 @@ void game() {
 
   //draw grass
   for (int i = 0; i < numGrass; i ++) {
-    grass(grassX[i], grassY[i], 50); 
+    grass(grassX[i], grassY[i], 20); 
   }
   
   //draw all holes

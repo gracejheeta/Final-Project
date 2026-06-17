@@ -31,6 +31,7 @@ int[] holeX;
 int[] holeY;
 int holeD;
 int numHoles;
+float sliderX;
 
 //mole variable
 boolean alive[];
@@ -51,7 +52,7 @@ void setup() {
   wkey = skey = akey = dkey = upkey = downkey = leftkey = rightkey = false;
   
   //initialize grass arrays
-  numGrass = 500;
+  numGrass = 3000;
   grassX = new int[numGrass];
   grassY = new int[numGrass];
   
@@ -61,7 +62,7 @@ void setup() {
   }
   
   //initialize hole arrays
-  numHoles = 10;
+  sliderX = 500;
   holeD = 100;
   
   holeX = new int[numHoles];

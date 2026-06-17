@@ -1,3 +1,24 @@
+void tactileRect(int x, int y, int w, int h, color normalStroke, color newStroke, color Fill) {
+  // if mouse is inside rect
+  if (mouseX > x && mouseX < x + w && mouseY > y && mouseY < y + h) {
+    stroke(newStroke);
+  } else {
+    stroke(normalStroke);
+  }
+  
+  fill(Fill);
+  rect(x, y, w, h);
+}
+
+void tactileCircle(int x, int y, int d, color normalStroke, color newStroke, color Fill) {
+  // if mouse is inside circle
+  if ( dist(mouseX, mouseY, x, y) < d/2 ) {
+    stroke(newStroke);
+  } else {
+    stroke(normalStroke);
+  }
+}
+
 void hole(int x, int y, int w) {
   fill(grass);
   strokeWeight(5);
@@ -6,11 +27,10 @@ void hole(int x, int y, int w) {
 }
 
 void grass(int x, int y, int size) {
-  //(x, y): bottom middle point, size: length of entire shape
-  fill(grass);
-  noStroke();
-  triangle(x - size/2, y, x, y, x - size/4, y - size/2);
-  triangle(x + size/2, y, x, y, x + size/4, y - size/2 - 10);
+  //(x, y): top of line
+  stroke(grass);
+  strokeWeight(5);
+  line(x, y, x, y + size);
 }
 
 void mole(int x, int y, int d) {
@@ -76,4 +96,10 @@ void blueReset() {
   blueY = height/2;
   bluevx = 5;
   bluevy = 5;
+}
+
+void controlSlider() {
+  if (mouseX >= 300 && mouseX <= 700 && mouseY >= 575 && mouseY <= 625) {
+    sliderX = mouseX;
+  }
 }

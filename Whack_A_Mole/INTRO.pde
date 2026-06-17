@@ -1,15 +1,26 @@
 void intro() {
-  background(0);
-  fill(lightBrown);
-  rect(0, 0, width, 300);
-  fill(mediumBrown);
-  rect(0, 300, width, 300);
-  fill(darkBrown);
-  rect(0, 600, width, 300);
+  background(lightBrown);
+  textSize(50);
+  text("WHACK A MOLE!", width/2, height/2 - 100);
+  
+  text("Pick the number of holes!", width/2, height/2);
+  //slider
+  strokeWeight(5);
+  stroke(mediumBrown);
+  line(300, 600, 700, 600);
   fill(grass);
-  rect(0, 900, width, 100);
+  circle(sliderX, 600, 50);
+  fill(cream);
+  textSize(40);
+  numHoles = int(map(sliderX, 300, 700, 5, 15));
+  text(numHoles, sliderX, 600);
+  
 }
 
 void introClicks() {
-  mode = GAME;
+  controlSlider();
+}
+
+void introDrags() {
+  controlSlider();
 }
