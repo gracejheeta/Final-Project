@@ -10,17 +10,23 @@ void game() {
   for (int i = 0; i < numGrass; i ++) {
     grass(grassX[i], grassY[i], 50); 
   }
-
-  //holes
-  /*for (int x = 200; x <= 800; x += 200) {
-    for (int y = 200; y <= 800; y += 200) {
-      hole(x, y, 100);    
-    }
-  }*/
   
+  //draw all holes
   for (int i = 0; i < numHoles; i ++) {
-    hole(holeX[i], holeY[i], 100); 
+    hole(holeX[i], holeY[i], holeD); 
   }
+  
+  //draw moles if alive
+  for (int i = 0; i < numHoles; i ++) {
+    if (alive[i]) mole(holeX[i], holeY[i], holeD);
+  }
+  
+  //show and hide moles randomly
+  if (frameCount % 10 == 0) {
+    int hi = int(random(0, numHoles));
+    alive[hi] = !alive[hi];
+  }
+  
 }
 
 void gameClicks() {
