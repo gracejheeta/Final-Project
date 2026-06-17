@@ -67,11 +67,13 @@ void checkForOverlaps() {
 void redReset() {
   redX = width/5;
   redY = height/2;
-  redv = 5;
+  redvx = 5;
+  redvy = 5;
 }
 
 void blueReset() {
   blueX = 4 * width/5;
   blueY = height/2;
-  bluev = 5;
+  bluevx = 5;
+  bluevy = 5;
 }

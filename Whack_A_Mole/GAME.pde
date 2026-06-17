@@ -24,15 +24,17 @@ void game() {
     if (alive[i]) mole(holeX[i], holeY[i], holeD);
     
     //paddle hitting a mole
-    if ( dist(holeX[i], holeY[i], redX, redY) < (holeD - redD) && alive[i]) {
-      redScore ++;
-      redv *= 1.2;
-      alive[i] = false;
+    if ( dist(holeX[i], holeY[i], redX, redY) < (holeD/2 - redD/2) && alive[i]) {
+        redScore ++;
+        redvx *= 1.1;
+        redvy *= 1.1;
+        alive[i] = false;
     }
     
-    if ( dist(holeX[i], holeY[i], blueX, blueY) < (holeD - blueD) && alive[i] ) {
+    if ( dist(holeX[i], holeY[i], blueX, blueY) < (holeD/2 - blueD/2) && alive[i] ) {
       blueScore ++;
-      bluev *= 1.2;
+      bluevx *= 1.1;
+      bluevy *= 1.1;
       alive[i] = false;
     }
     
@@ -52,14 +54,14 @@ void game() {
   circle(blueX, blueY, blueD);
   
   //move paddles
-  if (wkey) redY -= redv;
-  if (skey) redY += redv;
-  if (akey) redX -= redv;
-  if (dkey) redX += redv;
-  if (upkey) blueY -= bluev;
-  if (downkey) blueY += bluev;
-  if (leftkey) blueX -= bluev;
-  if (rightkey) blueX += bluev;
+  if (wkey) redY -= redvy;
+  if (skey) redY += redvy;
+  if (akey) redX -= redvx;
+  if (dkey) redX += redvx;
+  if (upkey) blueY -= bluevy;
+  if (downkey) blueY += bluevy;
+  if (leftkey) blueX -= bluevx;
+  if (rightkey) blueX += bluevx;
   
   //paddle limits
   if (redX < 50 + redD/2) redX = 50 + redD/2;
@@ -72,6 +74,9 @@ void game() {
   if (blueY < 50 + blueD/2) blueY = 50 + blueD/2;
   if (blueY > 950 - blueD/2) blueY = 950 - blueD/2;
   
+  //switch to gameover
+  if (redScore == 15) mode = GAMEOVER;
+  if (blueScore == 15) mode = GAMEOVER;
 }
 
 void gameClicks() {

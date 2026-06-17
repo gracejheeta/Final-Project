@@ -36,8 +36,8 @@ int numHoles;
 boolean alive[];
 
 //paddle variables
-int redX, redY, redD, redv;
-int blueX, blueY, blueD, bluev;
+int redX, redY, redD, redvx, redvy;
+int blueX, blueY, blueD, bluevx, bluevy;
 
 //game variables
 int redScore, blueScore;
@@ -51,8 +51,7 @@ void setup() {
   wkey = skey = akey = dkey = upkey = downkey = leftkey = rightkey = false;
   
   //initialize grass arrays
-  numGrass = 200;
-  
+  numGrass = 500;
   grassX = new int[numGrass];
   grassY = new int[numGrass];
   
