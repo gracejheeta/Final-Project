@@ -14,11 +14,16 @@ void grass(int x, int y, int size) {
 }
 
 void mole(int x, int y, int d) {
-  stroke(0);
-  strokeWeight(3);
+  noStroke();
   //face
   fill(darkBrown);
   circle(x, y, d);
+  
+  // left eye
+  fill(0);
+  circle(x - d/5, y - d/5, d/6);
+  //right eye
+  circle(x + d/5, y - d/5, d/6);
   
   //inner circle
   fill(lightBrown);
@@ -30,15 +35,12 @@ void mole(int x, int y, int d) {
   
   //mouth
   noFill();
+  stroke(0);
+  strokeWeight(3);
   arc(x, y + d/6, d/3, d/3, PI/6, 5 * PI/6);
   
-  // left eye
-  fill(0);
-  circle(x - d/5, y - d/5, d/6);
-  //right eye
-  circle(x + d/5, y - d/5, d/6);
-  
   //top left whisker
+  stroke(0);
   line(x - d/8, y + d/15, x - d/3, y);
   //bottom left whisker
   line(x - d/8, y + 2 * d/15, x - d/3, y + d/15);
@@ -61,3 +63,15 @@ void checkForOverlaps() {
   } // end outer for loop ==============================================
   
 } // end checkForOverlaps() ==============================================
+
+void redReset() {
+  redX = width/5;
+  redY = height/2;
+  redv = 5;
+}
+
+void blueReset() {
+  blueX = 4 * width/5;
+  blueY = height/2;
+  bluev = 5;
+}

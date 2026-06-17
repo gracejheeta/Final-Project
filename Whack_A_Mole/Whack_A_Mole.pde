@@ -15,6 +15,11 @@ color mediumBrown = #964B00;
 color darkBrown = #5C4033;
 color grass = #567D46;
 color pink = #FFDEF3;
+color red = #FF0000;
+color blue = #00C5FF;
+
+//key variables
+boolean wkey, skey, akey, dkey, upkey, downkey, leftkey, rightkey;
 
 //grass variables
 int[] grassX;
@@ -30,9 +35,20 @@ int numHoles;
 //mole variable
 boolean alive[];
 
+//paddle variables
+int redX, redY, redD, redv;
+int blueX, blueY, blueD, bluev;
+
+//game variables
+int redScore, blueScore;
+
 void setup() {
   size(1000, 1000);
+  textAlign(CENTER, CENTER);
   mode = INTRO;
+  
+  //initialize keyboard variables
+  wkey = skey = akey = dkey = upkey = downkey = leftkey = rightkey = false;
   
   //initialize grass arrays
   numGrass = 200;
@@ -63,6 +79,16 @@ void setup() {
   for (int i = 0; i < numHoles; i ++) {
     alive[i] = false;
   }
+  
+  //initialize paddles
+  redReset();
+  redD = 50;
+  blueReset();
+  blueD = 50;
+  
+  //initialize game variables
+  redScore = 0;
+  blueScore = 0;
 }
 
 void draw() {
