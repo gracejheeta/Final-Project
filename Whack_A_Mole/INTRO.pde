@@ -1,4 +1,8 @@
 void intro() {
+  gameover.pause();
+  game.rewind();
+  intro.play();
+  
   background(lightBrown);
   
   //display title
@@ -54,7 +58,10 @@ void introClicks() {
   controlSlider();
   
   //press start button
-  if (mouseX > 400 && mouseX < 600 && mouseY > 650 && mouseY < 750) mode = GAME;
+  if (mouseX > 400 && mouseX < 600 && mouseY > 650 && mouseY < 750) {
+    mode = GAME;
+    game.loop();
+  }
 }
 
 void introDrags() {

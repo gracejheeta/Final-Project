@@ -1,4 +1,8 @@
 void gameover() {
+  game.pause();
+  intro.rewind();
+  gameover.play();
+  
   textSize(150);
   fill(255);
   strokeWeight(15);

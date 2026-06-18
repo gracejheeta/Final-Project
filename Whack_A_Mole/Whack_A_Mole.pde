@@ -1,6 +1,13 @@
 // Final Project
 // Whack A Mole
 
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
+
 //mode variables
 int mode;
 final int INTRO = 0;
@@ -47,6 +54,12 @@ int blueX, blueY, blueD, bluevx, bluevy;
 //game variables
 int redScore, blueScore, targetScore;
 
+//sound variables
+Minim minim;
+AudioPlayer game;
+AudioPlayer gameover;
+AudioPlayer intro;
+
 void setup() {
   size(1000, 1000, P2D);
   textAlign(CENTER, CENTER);
@@ -79,7 +92,13 @@ void setup() {
   
   //initialize game variables
   gameReset();
-  targetScore = 1;
+  targetScore = 15;
+  
+  //initialize sound variables
+  minim = new Minim(this);
+  game = minim.loadFile("game.mp3");
+  gameover = minim.loadFile("gameover.mp3");
+  intro = minim.loadFile("intro.mp3");
 }
 
 void draw() {

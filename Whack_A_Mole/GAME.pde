@@ -1,4 +1,7 @@
 void game() {
+  intro.pause();
+  gameover.rewind();
+ 
   //ground
   background(mediumBrown);
   strokeWeight(100);
@@ -26,8 +29,8 @@ void game() {
     // red paddle hitting a mole
     if ( dist(holeX[i], holeY[i], redX, redY) < (holeD/2 - redD/2) && alive[i]) {
         redScore ++;
-        redvx *= 1.1;
-        redvy *= 1.1;
+        redvx *= 1.2;
+        redvy *= 1.2;
         alive[i] = false;
         star(holeX[i], holeY[i]);
     }
@@ -35,8 +38,8 @@ void game() {
     // blue paddle hitting a mole
     if ( dist(holeX[i], holeY[i], blueX, blueY) < (holeD/2 - blueD/2) && alive[i] ) {
       blueScore ++;
-      bluevx *= 1.1;
-      bluevy *= 1.1;
+      bluevx *= 1.2;
+      bluevy *= 1.2;
       alive[i] = false;
       star(holeX[i], holeY[i]);
     }
@@ -80,11 +83,20 @@ void game() {
   if (blueY < 50 + blueD/2) blueY = 50 + blueD/2;
   if (blueY > 950 - blueD/2) blueY = 950 - blueD/2;
   
+  //pause button
+  strokeWeight(5);
+  tactileCircle(970, 30, 50, color(0), red, yellow);
+  stroke(color(0));
+  line(965, 20, 965, 40);
+  line(975, 20, 975, 40);
+  
   //switch to gameover
   if (redScore == targetScore) mode = GAMEOVER;
   if (blueScore == targetScore) mode = GAMEOVER;
 }
 
 void gameClicks() {
-  
+  if ( dist(mouseX, mouseY, 970, 30) < 25) {
+    mode = PAUSE;
+  }
 }
