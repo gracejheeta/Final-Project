@@ -17,6 +17,9 @@ void tactileCircle(int x, int y, int d, color normalStroke, color newStroke, col
   } else {
     stroke(normalStroke);
   }
+  
+  fill(Fill);
+  circle(x, y, d);
 }
 
 void hole(int x, int y, int w) {
@@ -98,8 +101,11 @@ void blueReset() {
   bluevy = 5;
 }
 
+void gameReset() {
+  redScore = 0;
+  blueScore = 0;
+}
+
 void controlSlider() {
-  if (mouseX >= 300 && mouseX <= 700 && mouseY >= 575 && mouseY <= 625) {
-    sliderX = mouseX;
-  }
+  if (mouseX > 300 && mouseX < 700 && mouseY > 475 && mouseY < 525) sliderX = mouseX;
 }

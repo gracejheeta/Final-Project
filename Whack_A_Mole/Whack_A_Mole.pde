@@ -16,7 +16,11 @@ color darkBrown = #5C4033;
 color grass = #567D46;
 color pink = #FFDEF3;
 color red = #FF0000;
+color yellow = #FEFF00;
 color blue = #00C5FF;
+
+//font variables
+PFont mounth;
 
 //key variables
 boolean wkey, skey, akey, dkey, upkey, downkey, leftkey, rightkey;
@@ -31,7 +35,7 @@ int[] holeX;
 int[] holeY;
 int holeD;
 int numHoles;
-float sliderX;
+int sliderX;
 
 //mole variable
 boolean alive[];
@@ -41,11 +45,13 @@ int redX, redY, redD, redvx, redvy;
 int blueX, blueY, blueD, bluevx, bluevy;
 
 //game variables
-int redScore, blueScore;
+int redScore, blueScore, targetScore;
 
 void setup() {
-  size(1000, 1000);
+  size(1000, 1000, P2D);
   textAlign(CENTER, CENTER);
+  mounth = createFont("Mounth.ttf", 100);
+
   mode = INTRO;
   
   //initialize keyboard variables
@@ -57,28 +63,13 @@ void setup() {
   grassY = new int[numGrass];
   
   for (int i = 0; i < numGrass; i ++) {
-    grassX[i] = int(random(100, 900));
-    grassY[i] = int(random(100, 900));
+    grassX[i] = int(random(50, 950));
+    grassY[i] = int(random(50, 950));
   }
   
-  //initialize hole arrays
+  //initialize hole variables
   sliderX = 500;
   holeD = 100;
-  
-  holeX = new int[numHoles];
-  holeY = new int[numHoles];
-  
-  for (int i = 0; i < numHoles; i ++) {
-    holeX[i] = int(random(100, 900));
-    holeY[i] = int(random(100, 900));
-  }
-  checkForOverlaps();
-
-  //initialize alive array
-  alive = new boolean[numHoles];
-  for (int i = 0; i < numHoles; i ++) {
-    alive[i] = false;
-  }
   
   //initialize paddles
   redReset();
@@ -87,8 +78,8 @@ void setup() {
   blueD = 50;
   
   //initialize game variables
-  redScore = 0;
-  blueScore = 0;
+  gameReset();
+  targetScore = 5;
 }
 
 void draw() {
