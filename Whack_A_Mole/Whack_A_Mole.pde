@@ -79,7 +79,7 @@ void setup() {
   
   //initialize game variables
   gameReset();
-  targetScore = 5;
+  targetScore = 1;
 }
 
 void draw() {

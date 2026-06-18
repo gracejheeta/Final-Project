@@ -109,3 +109,17 @@ void gameReset() {
 void controlSlider() {
   if (mouseX > 300 && mouseX < 700 && mouseY > 475 && mouseY < 525) sliderX = mouseX;
 }
+
+void star(int x, int y) {
+  noFill();
+  strokeWeight(5);
+  stroke(yellow);
+  
+  pushMatrix();
+  translate(x, y);
+  for (int i = 0; i < 5; i ++) {
+    line(0, -100, -60, 80);
+    rotate(radians(72));
+  }
+  popMatrix();
+}

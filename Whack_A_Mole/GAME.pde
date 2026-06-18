@@ -29,6 +29,7 @@ void game() {
         redvx *= 1.1;
         redvy *= 1.1;
         alive[i] = false;
+        star(holeX[i], holeY[i]);
     }
     
     // blue paddle hitting a mole
@@ -37,6 +38,7 @@ void game() {
       bluevx *= 1.1;
       bluevy *= 1.1;
       alive[i] = false;
+      star(holeX[i], holeY[i]);
     }
     
   } // end for loop ============================================================
